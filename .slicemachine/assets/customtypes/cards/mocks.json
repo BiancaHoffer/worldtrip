@@ -1,0 +1,72 @@
+{
+  "id": "mock-doc-id",
+  "url": null,
+  "type": "cards",
+  "href": null,
+  "tags": [],
+  "first_publication_date": "1970-01-01T00:00:01+0000",
+  "last_publication_date": "1970-01-01T00:00:01+0000",
+  "slugs": [],
+  "linked_documents": [],
+  "lang": "en-us",
+  "alternate_languages": [],
+  "data": {
+    "title": "government",
+    "subtitle": "so",
+    "bannerhome": {
+      "dimensions": {
+        "width": 900,
+        "height": 500
+      },
+      "alt": null,
+      "copyright": null,
+      "url": "https://images.unsplash.com/photo-1601933973783-43cf8a7d4c5f"
+    },
+    "bannercontinent": {
+      "dimensions": {
+        "width": 900,
+        "height": 500
+      },
+      "alt": null,
+      "copyright": null,
+      "url": "https://images.unsplash.com/photo-1600861194802-a2b11076bc51"
+    },
+    "text": [
+      {
+        "type": "paragraph",
+        "text": "Dolore exercitation aliquip Lorem eu proident aute reprehenderit. Pariatur velit reprehenderit sit labore quis ex anim.",
+        "spans": []
+      }
+    ],
+    "infos": [
+      {
+        "number": "calm",
+        "infotext": "start"
+      }
+    ],
+    "citys": [
+      {
+        "cityimage": {
+          "dimensions": {
+            "width": 900,
+            "height": 500
+          },
+          "alt": null,
+          "copyright": null,
+          "url": "https://images.unsplash.com/photo-1606248897732-2c5ffe759c04"
+        },
+        "city": "damage",
+        "country": "smooth",
+        "flag": {
+          "dimensions": {
+            "width": 900,
+            "height": 500
+          },
+          "alt": null,
+          "copyright": null,
+          "url": "https://images.unsplash.com/photo-1576662712957-9c79ae1280f8"
+        }
+      }
+    ]
+  }
+}

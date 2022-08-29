@@ -1,0 +1,141 @@
+{
+  "id": "posts",
+  "label": "posts",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "type": "UID",
+        "config": {
+          "label": "uid",
+          "placeholder": ""
+        }
+      },
+      "title": {
+        "type": "Text",
+        "config": {
+          "label": "title",
+          "placeholder": ""
+        }
+      },
+      "subtitle": {
+        "type": "Text",
+        "config": {
+          "label": "subtitle",
+          "placeholder": ""
+        }
+      },
+      "image": {
+        "type": "Image",
+        "config": {
+          "label": "image",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "banner": {
+        "type": "Image",
+        "config": {
+          "label": "banner",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "text": {
+        "type": "StructuredText",
+        "config": {
+          "label": "text",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      },
+      "infos": {
+        "type": "Group",
+        "config": {
+          "label": "infos",
+          "fields": {
+            "number": {
+              "type": "Text",
+              "config": {
+                "label": "number",
+                "placeholder": ""
+              }
+            },
+            "info": {
+              "type": "Text",
+              "config": {
+                "label": "info",
+                "placeholder": ""
+              }
+            },
+            "boolean": {
+              "type": "Boolean",
+              "config": {
+                "label": "boolean",
+                "default_value": false,
+                "placeholder_true": "true",
+                "placeholder_false": "false"
+              }
+            },
+            "morecitys": {
+              "type": "Text",
+              "config": {
+                "label": "moreCitys",
+                "placeholder": ""
+              }
+            }
+          }
+        }
+      },
+      "booleancity": {
+        "type": "Boolean",
+        "config": {
+          "label": "booleancity",
+          "default_value": false,
+          "placeholder_true": "true",
+          "placeholder_false": "false"
+        }
+      },
+      "citys": {
+        "type": "Group",
+        "config": {
+          "label": "citys",
+          "fields": {
+            "imagecity": {
+              "type": "Image",
+              "config": {
+                "label": "imageCity",
+                "constraint": {},
+                "thumbnails": []
+              }
+            },
+            "city": {
+              "type": "Text",
+              "config": {
+                "label": "city",
+                "placeholder": ""
+              }
+            },
+            "country": {
+              "type": "Text",
+              "config": {
+                "label": "country",
+                "placeholder": ""
+              }
+            },
+            "flag": {
+              "type": "Image",
+              "config": {
+                "label": "flag",
+                "constraint": {},
+                "thumbnails": []
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

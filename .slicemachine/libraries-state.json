@@ -1,0 +1,78 @@
+{
+  "slices": {
+    "components": {
+      "posts": {
+        "library": "slices",
+        "id": "posts",
+        "name": "Posts",
+        "description": "Posts",
+        "model": {
+          "id": "posts",
+          "type": "SharedSlice",
+          "name": "Posts",
+          "description": "Posts",
+          "variations": [
+            {
+              "id": "default",
+              "name": "Default",
+              "docURL": "...",
+              "version": "sktwi1xtmkfgx8626",
+              "description": "Posts",
+              "primary": {
+                "title": {
+                  "type": "StructuredText",
+                  "config": {
+                    "single": "heading1",
+                    "label": "Title",
+                    "placeholder": "This is where it all begins..."
+                  }
+                },
+                "description": {
+                  "type": "StructuredText",
+                  "config": {
+                    "single": "paragraph",
+                    "label": "Description",
+                    "placeholder": "A nice description of your feature"
+                  }
+                }
+              },
+              "items": {},
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+            }
+          ]
+        },
+        "mocks": {
+          "default": {
+            "variation": "default",
+            "version": "sktwi1xtmkfgx8626",
+            "items": [
+              {}
+            ],
+            "primary": {
+              "title": [
+                {
+                  "type": "heading1",
+                  "text": "Underline",
+                  "spans": []
+                }
+              ],
+              "description": [
+                {
+                  "type": "paragraph",
+                  "text": "Occaecat adipisicing sint aliqua commodo deserunt minim tempor nulla quis veniam ut quis sunt occaecat amet. Occaecat pariatur laboris do ex enim esse. Ea anim Lorem ad exercitation.",
+                  "spans": []
+                }
+              ]
+            },
+            "slice_type": "posts"
+          }
+        },
+        "meta": {
+          "fileName": "index",
+          "extension": "js"
+        },
+        "screenshotPaths": {}
+      }
+    }
+  }
+}

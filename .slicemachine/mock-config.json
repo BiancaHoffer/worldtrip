@@ -1,0 +1,25 @@
+{
+  "_cts": {
+    "cards": {
+      "text": {
+        "config": {
+          "patternType": "PARAGRAPH",
+          "blocks": 1
+        }
+      }
+    },
+    "posts": {
+      "text": {
+        "config": {
+          "patternType": "PARAGRAPH",
+          "blocks": 1
+        }
+      },
+      "infos": {},
+      "citys": {}
+    }
+  },
+  "slices": {
+    "Posts": {}
+  }
+}
