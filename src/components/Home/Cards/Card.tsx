@@ -1,4 +1,4 @@
-import { Flex, Text, Image, Stack, useBreakpointValue, Box } from "@chakra-ui/react";
+import { Flex, Text, Image, useBreakpointValue } from "@chakra-ui/react";
 
 interface CardProps {
   icon: string;

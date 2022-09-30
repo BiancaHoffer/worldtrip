@@ -1,4 +1,5 @@
-import { Flex, Text, Box, Image, useBreakpointValue } from "@chakra-ui/react";
+import { Flex, Text, Box, Image, useBreakpointValue, Spinner } from "@chakra-ui/react";
+import { useRouter } from "next/router";
 
 export function Banner() {
     const mobile = useBreakpointValue({
@@ -41,24 +42,21 @@ export function Banner() {
                 </Text>
             </Box>
             
-            {mobile === true ? 
-                (
-                    <Box 
-                        position="relative" 
-                        bottom="-70"
-                    >
-                        <Image 
-                            src="images/airplane.png" 
-                            alt="avião" 
-                            height="270.74" 
-                            width="417.15"
-                        />
-                    </Box>
-                ) 
-            : 
-                (
-                    <div />
-                )}
+            {mobile === true ? (
+                <Box 
+                    position="relative" 
+                    bottom="-70"
+                >
+                    <Image 
+                        src="images/airplane.png" 
+                        alt="avião" 
+                        height="270.74" 
+                        width="417.15"
+                    />
+                </Box>
+            ) : (
+                <div />
+            )}
         </Flex>
     </Flex>
   );

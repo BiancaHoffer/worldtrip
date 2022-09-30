@@ -14,22 +14,22 @@ import { Cards } from "../components/Home/Cards";
 import { Divider } from "../components/Home/divider";
 import { Slides } from "../components/Home/Slides";
 
-interface Banner {
+interface BannerData {
   uid?: string;
   data: {
     title: string;
     subtitle: string;
     image: {
       url: string
-    }
-  }
+    };
+  };
 }
 
 interface HomeProps {
-  datas: Banner[]
+  datas: BannerData[]
 }
 
-export default function Home({datas}: HomeProps) {
+export default function Home({ datas }: HomeProps) {
   const [banner, setBanner] = useState(datas)
   return (
     <>
@@ -78,7 +78,7 @@ export const getStaticProps: GetStaticProps = async () => {
         }
       }  
     }
-  })
+  }) 
 
   return {
     props: {

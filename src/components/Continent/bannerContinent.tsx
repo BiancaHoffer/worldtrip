@@ -5,7 +5,7 @@ interface BannerContinentProps {
     banner: string;
 }
 
-export function BannerContinent({ title, banner }) {
+export function BannerContinent({ title, banner }: BannerContinentProps) {
     return (
         <Flex
             bgImage={`${banner}`}
@@ -31,3 +31,4 @@ export function BannerContinent({ title, banner }) {
         </Flex>
     );
 }
+

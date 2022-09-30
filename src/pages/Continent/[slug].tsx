@@ -6,7 +6,7 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import { getPrismicClient } from "../../services/prismic";
 import * as prismicH from '@prismicio/helpers';
 
-import { VStack, Flex, Heading, Grid, InputGroup } from "@chakra-ui/react";
+import { VStack, Flex, Heading, Grid  } from "@chakra-ui/react";
 
 import { BannerContinent } from "../../components/Continent/bannerContinent";
 import { CardCity } from "../../components/Continent/CardCity";
@@ -14,7 +14,7 @@ import { InfosContinent } from "../../components/Continent/InfosContinent";
 import { TextContinent } from "../../components/Continent/TextContinent";
 import { Header } from "../../components/Header";
 
-interface Datas {
+interface ContinentDatas {
     uid?: string;
     data: {
         title: string;
@@ -43,7 +43,7 @@ interface Datas {
 }
 
 interface ContinentProps {
-    continent: Datas;
+    continent: ContinentDatas;
 }
 
 export default function Continent({ continent }: ContinentProps) {
@@ -126,7 +126,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
     return {
         paths,
-        fallback: "blocking",
+        fallback: true,
     }
 }
 
@@ -135,7 +135,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     const prismic = getPrismicClient({});
     const response = await prismic.getByUID('posts', String(slug), {})
     
-    const continent: Datas = {
+    const continent: ContinentDatas = {
         uid: response.uid,
         data: {
             title: response.data.title,
