@@ -54,14 +54,14 @@ export default function Continent({ continent }: ContinentProps) {
             {dataContinent && (
                 <>
                     <Head>
-                        <title>{`${dataContinent.data?.title} ● worldtrip`}</title>
+                        <title>{`${dataContinent.data.title} ● worldtrip`}</title>
                     </Head>
 
                     <VStack>
                         <Header />  
                         <BannerContinent 
-                            title={dataContinent.data?.title}
-                            banner={dataContinent.data?.banner.url}
+                            title={dataContinent.data.title}
+                            banner={dataContinent.data.banner.url}
                         />
                         <Flex
                             w="100%"
@@ -75,8 +75,8 @@ export default function Continent({ continent }: ContinentProps) {
                                 px={["4", "4", "4", "4", "0"]}
                                 gap={[3, 6,  6,  8]}
                             >
-                                <TextContinent text={dataContinent.data?.text} />
-                                <InfosContinent infos={dataContinent.data?.infos} />   
+                                <TextContinent text={dataContinent.data.text} />
+                                <InfosContinent infos={dataContinent.data.infos} />   
                             </Grid>
                         </Flex>
 
@@ -87,7 +87,7 @@ export default function Continent({ continent }: ContinentProps) {
                             align={["flex-start", "center", "center", "flex-start", "flex-start"]}
                             direction="column"
                         >
-                            {dataContinent.data?.booleancity === false ? 
+                            {dataContinent.data.booleancity === false ? 
                                 <></>
                             :
                                 <>
@@ -108,7 +108,7 @@ export default function Continent({ continent }: ContinentProps) {
                                         my="8"
                                         alignSelf="center"
                                     >
-                                        <CardCity citys={dataContinent.data?.citys} />
+                                        <CardCity citys={dataContinent.data.citys} />
                                     </Grid>
                                 </>
                             } 
