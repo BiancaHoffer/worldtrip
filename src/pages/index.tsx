@@ -74,8 +74,8 @@ export const getStaticProps: GetStaticProps = async () => {
         title: data.data.title,  
         subtitle: data.data.subtitle,
         image: {
-          url: data.data.image,
-          // url: prismicH.asImageSrc(data.data.image),
+          //url: data.data.image,
+          url: prismicH.asImageSrc(data.data.image),
         }
       }  
     }
