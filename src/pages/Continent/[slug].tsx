@@ -13,6 +13,7 @@ import { CardCity } from "../../components/Continent/CardCity";
 import { InfosContinent } from "../../components/Continent/InfosContinent";
 import { TextContinent } from "../../components/Continent/TextContinent";
 import { Header } from "../../components/Header";
+import { useRouter } from "next/router";
 
 interface ContinentDatas {
     uid?: string;
@@ -48,9 +49,10 @@ interface ContinentProps {
 
 export default function Continent({ continent }: ContinentProps) {
     const [dataContinent, setData] = useState(continent);
+    const router = useRouter()
 
-    if (!dataContinent) {
-        return <Text>Erro página</Text>
+    if (router.isFallback) {
+        return <Text>Carregando...</Text>
     }
 
     return (
@@ -62,7 +64,7 @@ export default function Continent({ continent }: ContinentProps) {
                     </Head>
 
                     <VStack>
-                        <Header />  
+                          
                         <BannerContinent 
                             title={dataContinent.data.title}
                             banner={dataContinent.data.banner.url}
@@ -127,9 +129,13 @@ export default function Continent({ continent }: ContinentProps) {
 
 export const getStaticPaths: GetStaticPaths = async () => {
     const prismic = getPrismicClient({});
-    const posts = await prismic.getByType('posts', {});
+    const posts = await prismic.getByType('posts');
     const paths = posts.results.map(post => {
-        return { params: { slug: post.uid } };
+        return { 
+            params: { 
+                slug: post.uid 
+            } 
+        };
     })
 
     return {
@@ -139,10 +145,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-    const { slug } = params;
     const prismic = getPrismicClient({});
+    const { slug } = params;
     
-    const response = await prismic.getByUID('posts', String(slug), {})
+    const response = await prismic.getByUID('posts', String(slug))
 
     const continent: ContinentDatas = {
         uid: response.uid,
@@ -181,6 +187,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         props: {
             continent,
         },
-        revalidate: 10,
+        revalidate: 1800,
     }
 }

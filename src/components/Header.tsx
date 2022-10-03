@@ -51,7 +51,7 @@ export function Header({ cursor, label, icon,...rest }: ButtonProps) {
           
         )}
         <Image 
-          src="Images/logo.svg" 
+          src="/Images/logo.svg" 
           alt="logo" 
           width={["81px", "184px"]} 
           justifySelf="center"

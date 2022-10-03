@@ -8,7 +8,6 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
 import 'swiper/css';
-import { useState } from 'react';
 
 interface Slides {
   uid?: string;
@@ -25,8 +24,6 @@ interface SlidesProps {
 }
 
 export function Slides({ datas }: SlidesProps) {
-  const [dataSlides, setDataSlides] = useState(datas);
-  console.log()
   return (
     <Flex
       w="100%"
@@ -39,25 +36,26 @@ export function Slides({ datas }: SlidesProps) {
         pagination={{clickable: true}}
         slidesPerView={1}
       >
-        {dataSlides.map(slide => (
-          <SwiperSlide key={slide.uid}>
+        {datas.map(data => (
+          <SwiperSlide key={data.uid}>
             <Flex
-              bgImage={`url('${slide.data.image}')`}
+              bgImage={`url('${data.data.image.url}')`}
               bgPosition="center"
               bgRepeat="no-repeat"
+              bgSize="cover"
               w="100%"
               h="100%"
               justify="center"
               align="center"
             >
-              <Link href={`/Continent/${slide.uid}`}>
+              <Link href={`/Continent/${data.uid}`}>
                 <a>
                   <Heading
                     fontSize={["1.5rem", "3rem"]}
                     textAlign="center"
                     color="white"
                   >
-                    {slide.data.title}
+                    {data.data.title}
                   </Heading>
                   <Text
                     fontSize={["0.875rem", "1.5rem"]}
@@ -65,7 +63,7 @@ export function Slides({ datas }: SlidesProps) {
                     m="4"
                     textAlign="center"
                   >
-                    {slide.data.subtitle}
+                    {data.data.subtitle}
                   </Text>
                 </a>
               </Link>

@@ -26,11 +26,11 @@ interface BannerData {
 }
 
 interface HomeProps {
-  data: BannerData[]
+  datas: BannerData[]
 }
 
-export default function Home({ data }: HomeProps) {
-  const [dataSlides, setDataSlides] = useState(data)
+export default function Home({ datas }: HomeProps) {
+  const [banner, setBanner] = useState(datas)
   return (
     <>
       <Head>
@@ -38,7 +38,6 @@ export default function Home({ data }: HomeProps) {
       </Head>
       
       <VStack as="main" w="100%">
-          <Header /> 
           <Banner />
           <Cards />
           <Divider />
@@ -53,7 +52,7 @@ export default function Home({ data }: HomeProps) {
           </Text>
           
           <Slides
-            datas={dataSlides}
+            datas={banner}
           />
 
           <Footer />
@@ -67,15 +66,15 @@ export const getStaticProps: GetStaticProps = async () => {
   
   const response = await prismic.getByType('posts', {})
 
-  const continents = response.results.map(continent => {
+  const datas = response.results.map(data => {
     return {
-      uid: continent.uid,
+      uid: data.uid,
       data: {
-        title: continent.data.title,  
-        subtitle: continent.data.subtitle,
+        title: data.data.title,  
+        subtitle: data.data.subtitle,
         image: {
-          url: continent.data.image.url,
-          // url: prismicH.asImageSrc(data.data.image),
+          //url: data.data.image.url,
+          url: prismicH.asImageSrc(data.data.image),
         }
       }  
     }
@@ -83,8 +82,9 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return {
     props: {
-      continents 
-    }
+      datas
+    },
+    revalidate: 1800
   }
 }
 
