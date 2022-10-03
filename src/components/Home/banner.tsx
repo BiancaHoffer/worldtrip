@@ -8,7 +8,7 @@ export function Banner() {
     })
     return (
     <Flex
-        backgroundImage="url('/images/background.jpg')"
+        backgroundImage="url('Images/background.jpg')"
         backgroundPosition={["100% 30%", "100% 30%"]}
         backgroundRepeat="no-repeat"
         w="100%"
@@ -47,8 +47,8 @@ export function Banner() {
                     position="relative" 
                     bottom="-70"
                 >
-                    <img 
-                        src={"images/airplane.png"}
+                    <Image
+                        src={"Images/airplane.png"}
                         alt="avião" 
                         height="270.74" 
                         width="417.15"
