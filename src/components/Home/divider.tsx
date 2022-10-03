@@ -5,7 +5,7 @@ export function Divider() {
     <VStack
       py={["6", "16"]}
     >
-        <Image src="images/divider.svg" alt="divider" />
+        <Image src="Images/divider.svg" alt="divider" />
     </VStack>
   );
 }

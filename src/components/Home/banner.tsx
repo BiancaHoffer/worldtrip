@@ -1,4 +1,4 @@
-import { Flex, Text, Box, Image, useBreakpointValue, Spinner } from "@chakra-ui/react";
+import { Flex, Text, Box, Image, useBreakpointValue } from "@chakra-ui/react";
 import image from '../../Images/background.jpg';
 
 export function Banner() {
