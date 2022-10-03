@@ -157,7 +157,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
             banner: {
                 url: prismicH.asImageSrc(response.data.banner)
             },
-            text: prismicH.asText(response?.data.text),
+            text: prismicH.asText(response.data.text),
             infos: response.data.infos.map(info => {
                 return {
                     number: info.number,
