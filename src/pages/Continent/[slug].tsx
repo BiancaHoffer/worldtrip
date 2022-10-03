@@ -6,7 +6,7 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import { getPrismicClient } from "../../services/prismic";
 import * as prismicH from '@prismicio/helpers';
 
-import { VStack, Flex, Heading, Grid  } from "@chakra-ui/react";
+import { VStack, Flex, Heading, Grid, Text  } from "@chakra-ui/react";
 
 import { BannerContinent } from "../../components/Continent/bannerContinent";
 import { CardCity } from "../../components/Continent/CardCity";
@@ -48,6 +48,10 @@ interface ContinentProps {
 
 export default function Continent({ continent }: ContinentProps) {
     const [dataContinent, setData] = useState(continent);
+
+    if (!dataContinent) {
+        return <Text>Erro página</Text>
+    }
 
     return (
         <>
@@ -137,38 +141,42 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
     const { slug } = params;
     const prismic = getPrismicClient({});
-    const response = await prismic.getByUID('posts', String(slug), {})
-    
-    const continent: ContinentDatas = {
-        uid: response.uid,
-        data: {
-            title: response.data.title,
-            banner: {
-                url: prismicH.asImageSrc(response.data.banner)
-            },
-            text: prismicH.asText(response?.data.text),
-            infos: response.data.infos.map(info => {
-                return {
-                    number: info.number,
-                    info: info.info,
-                    boolean: info.boolean,
-                    morecitys: info.morecitys,
-                }
-            }),
-            booleancity: response.data.booleancity,
-            citys: response.data.citys.map(city => {
-                return {
-                    imagecity: {
-                        url: prismicH.asImageSrc(city.imagecity),
-                    },
-                    city: city.city,
-                    country: city.country,
-                    flag: {
-                        url: prismicH.asImageSrc(city.flag),
-                    },
-                }
-            }) 
-        },    
+    try {
+        const response = await prismic.getByUID('posts', String(slug), {})
+
+        var continent: ContinentDatas = {
+            uid: response.uid,
+            data: {
+                title: response.data.title,
+                banner: {
+                    url: prismicH.asImageSrc(response.data.banner)
+                },
+                text: prismicH.asText(response?.data.text),
+                infos: response.data.infos.map(info => {
+                    return {
+                        number: info.number,
+                        info: info.info,
+                        boolean: info.boolean,
+                        morecitys: info.morecitys,
+                    }
+                }),
+                booleancity: response.data.booleancity,
+                citys: response.data.citys.map(city => {
+                    return {
+                        imagecity: {
+                            url: prismicH.asImageSrc(city.imagecity),
+                        },
+                        city: city.city,
+                        country: city.country,
+                        flag: {
+                            url: prismicH.asImageSrc(city.flag),
+                        },
+                    }
+                }) 
+            },    
+        }
+    } catch (error){
+        console.log('Erro:', error)
     }
 
     // console.log(JSON.stringify(continent, null, 2));
