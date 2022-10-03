@@ -144,8 +144,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     
     const response = await prismic.getByUID('posts', String(slug), {})
 
-    const notFound = response.uid[0] ? false : true;
-
     const continent: ContinentDatas = {
         uid: response.uid,
         data: {
@@ -177,8 +175,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
             }) 
         },    
     }
-    
 
+    const notFound = continent ? false : true;
+    
     // console.log(JSON.stringify(continent, null, 2));
     return {
         props: {
