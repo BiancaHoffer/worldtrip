@@ -48,7 +48,7 @@ export function Banner() {
                     bottom="-70"
                 >
                     <img 
-                        src={image}
+                        src={"images/airplane.png"}
                         alt="avião" 
                         height="270.74" 
                         width="417.15"
