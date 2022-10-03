@@ -175,8 +175,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
             }) 
         },    
     }
-
-    const notFound = continent ? false : true;
     
     // console.log(JSON.stringify(continent, null, 2));
     return {
@@ -184,6 +182,5 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
             continent,
         },
         revalidate: 10,
-        notFound
     }
 }
