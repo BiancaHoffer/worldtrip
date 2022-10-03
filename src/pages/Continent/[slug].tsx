@@ -128,7 +128,7 @@ export default function Continent({ continent }: ContinentProps) {
 export const getStaticPaths: GetStaticPaths = async () => {
     const prismic = getPrismicClient({});
     const posts = await prismic.getByType('posts', {});
-    const paths = posts.results?.map(post => {
+    const paths = posts.results.map(post => {
         return { params: { slug: post.uid } };
     })
 
