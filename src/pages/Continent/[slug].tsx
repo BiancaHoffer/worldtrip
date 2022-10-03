@@ -141,48 +141,50 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
     const { slug } = params;
     const prismic = getPrismicClient({});
-    try {
-        const response = await prismic.getByUID('posts', String(slug), {})
+    
+    const response = await prismic.getByUID('posts', String(slug), {})
 
-        var continent: ContinentDatas = {
-            uid: response.uid,
-            data: {
-                title: response.data.title,
-                banner: {
-                    url: prismicH.asImageSrc(response.data.banner)
-                },
-                text: prismicH.asText(response?.data.text),
-                infos: response.data.infos.map(info => {
-                    return {
-                        number: info.number,
-                        info: info.info,
-                        boolean: info.boolean,
-                        morecitys: info.morecitys,
-                    }
-                }),
-                booleancity: response.data.booleancity,
-                citys: response.data.citys.map(city => {
-                    return {
-                        imagecity: {
-                            url: prismicH.asImageSrc(city.imagecity),
-                        },
-                        city: city.city,
-                        country: city.country,
-                        flag: {
-                            url: prismicH.asImageSrc(city.flag),
-                        },
-                    }
-                }) 
-            },    
-        }
-    } catch (error){
-        console.log('Erro:', error)
+    const notFound = response.uid[0] ? false : true;
+
+    const continent: ContinentDatas = {
+        uid: response.uid,
+        data: {
+            title: response.data.title,
+            banner: {
+                url: prismicH.asImageSrc(response.data.banner)
+            },
+            text: prismicH.asText(response?.data.text),
+            infos: response.data.infos.map(info => {
+                return {
+                    number: info.number,
+                    info: info.info,
+                    boolean: info.boolean,
+                    morecitys: info.morecitys,
+                }
+            }),
+            booleancity: response.data.booleancity,
+            citys: response.data.citys.map(city => {
+                return {
+                    imagecity: {
+                        url: prismicH.asImageSrc(city.imagecity),
+                    },
+                    city: city.city,
+                    country: city.country,
+                    flag: {
+                        url: prismicH.asImageSrc(city.flag),
+                    },
+                }
+            }) 
+        },    
     }
+    
 
     // console.log(JSON.stringify(continent, null, 2));
     return {
         props: {
             continent,
-        }
+        },
+        revalidate: 10,
+        notFound
     }
 }
