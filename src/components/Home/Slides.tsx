@@ -41,7 +41,7 @@ export function Slides({ datas }: SlidesProps) {
         {dataSlides.map(slide => (
           <SwiperSlide key={slide.uid}>
             <Flex
-              bgImage={`url('${slide.data.image.url}')`}
+              bgImage={`url('${slide.data.image}')`}
               bgPosition="center"
               bgRepeat="no-repeat"
               w="100%"
