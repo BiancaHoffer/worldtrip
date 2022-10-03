@@ -52,7 +52,7 @@ export default function Continent({ continent }: ContinentProps) {
     return (
         <>
             <Head>
-                <title>{`${data.data.title} ● worldtrip`}</title>
+                <title>{`${data.data?.title} ● worldtrip`}</title>
             </Head>
 
            <VStack>
@@ -73,8 +73,8 @@ export default function Continent({ continent }: ContinentProps) {
                         px={["4", "4", "4", "4", "0"]}
                         gap={[3, 6,  6,  8]}
                     >
-                        <TextContinent text={data.data.text} />
-                        <InfosContinent infos={data.data.infos} />   
+                        <TextContinent text={data.data?.text} />
+                        <InfosContinent infos={data.data?.infos} />   
                     </Grid>
                 </Flex>
 
@@ -106,7 +106,7 @@ export default function Continent({ continent }: ContinentProps) {
                                 my="8"
                                 alignSelf="center"
                             >
-                                <CardCity citys={data.data.citys} />
+                                <CardCity citys={data.data?.citys} />
                             </Grid>
                         </>
                     }
