@@ -47,72 +47,76 @@ interface ContinentProps {
 }
 
 export default function Continent({ continent }: ContinentProps) {
-    const [data, setData] = useState(continent);
+    const [dataContinent, setData] = useState(continent);
 
     return (
         <>
-            <Head>
-                <title>{`${data.data?.title} ● worldtrip`}</title>
-            </Head>
+            {dataContinent && (
+                <>
+                    <Head>
+                        <title>{`${dataContinent.data?.title} ● worldtrip`}</title>
+                    </Head>
 
-           <VStack>
-                <Header />  
-                <BannerContinent 
-                    title={data.data.title}
-                    banner={data.data.banner.url}
-                />
-                <Flex
-                     w="100%"
-                     maxWidth={1160}
-                     justifyContent="center"
-                     py={["4","8", "8", "20"]}
-                >
-                    <Grid   
-                        templateColumns={["1fr", "1fr", "1fr", "repeat(2, 1fr)" ]}
-                        alignItems="center"
-                        px={["4", "4", "4", "4", "0"]}
-                        gap={[3, 6,  6,  8]}
-                    >
-                        <TextContinent text={data.data?.text} />
-                        <InfosContinent infos={data.data?.infos} />   
-                    </Grid>
-                </Flex>
-
-                <Flex
-                    w="100%"
-                    maxWidth={1160}
-                    justifyContent="center"
-                    align={["flex-start", "center", "center", "flex-start", "flex-start"]}
-                    direction="column"
-                >
-                    {data.data.booleancity === false ? 
-                        <></>
-                    :
-                        <>
-                            <Heading 
-                                fontWeight={["500", "500", "600", "600"]}
-                                textAlign="start" 
-                                fontSize={["1.5rem", "2.25rem", "2,25rem", "2.25rem"]}
-                                mx="4"
-                                mt={["6", "6", "8", "2"]}
-                                mb="4"
-                            >   
-                                Cidades +100
-                            </Heading>
-
-                            <Grid
-                                templateColumns={["1fr","1fr", "1fr 1fr", "1fr 1fr 1fr", "repeat(4, 1fr)"]}
-                                gap={8}
-                                my="8"
-                                alignSelf="center"
+                    <VStack>
+                        <Header />  
+                        <BannerContinent 
+                            title={dataContinent.data?.title}
+                            banner={dataContinent.data?.banner.url}
+                        />
+                        <Flex
+                            w="100%"
+                            maxWidth={1160}
+                            justifyContent="center"
+                            py={["4","8", "8", "20"]}
+                        >
+                            <Grid   
+                                templateColumns={["1fr", "1fr", "1fr", "repeat(2, 1fr)" ]}
+                                alignItems="center"
+                                px={["4", "4", "4", "4", "0"]}
+                                gap={[3, 6,  6,  8]}
                             >
-                                <CardCity citys={data.data?.citys} />
+                                <TextContinent text={dataContinent.data?.text} />
+                                <InfosContinent infos={dataContinent.data?.infos} />   
                             </Grid>
-                        </>
-                    }
-                    
-                </Flex>
-           </VStack>
+                        </Flex>
+
+                        <Flex
+                            w="100%"
+                            maxWidth={1160}
+                            justifyContent="center"
+                            align={["flex-start", "center", "center", "flex-start", "flex-start"]}
+                            direction="column"
+                        >
+                            {dataContinent.data?.booleancity === false ? 
+                                <></>
+                            :
+                                <>
+                                    <Heading 
+                                        fontWeight={["500", "500", "600", "600"]}
+                                        textAlign="start" 
+                                        fontSize={["1.5rem", "2.25rem", "2,25rem", "2.25rem"]}
+                                        mx="4"
+                                        mt={["6", "6", "8", "2"]}
+                                        mb="4"
+                                    >   
+                                        Cidades +100
+                                    </Heading>
+
+                                    <Grid
+                                        templateColumns={["1fr","1fr", "1fr 1fr", "1fr 1fr 1fr", "repeat(4, 1fr)"]}
+                                        gap={8}
+                                        my="8"
+                                        alignSelf="center"
+                                    >
+                                        <CardCity citys={dataContinent.data?.citys} />
+                                    </Grid>
+                                </>
+                            } 
+                        </Flex>
+                    </VStack>
+                </>
+            )}
+            
         </>
     )
 }
@@ -120,7 +124,7 @@ export default function Continent({ continent }: ContinentProps) {
 export const getStaticPaths: GetStaticPaths = async () => {
     const prismic = getPrismicClient({});
     const posts = await prismic.getByType('posts', {});
-    const paths = posts.results.map(post => {
+    const paths = posts.results?.map(post => {
         return { params: { slug: post.uid } };
     })
 
@@ -142,7 +146,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
             banner: {
                 url: prismicH.asImageSrc(response.data.banner)
             },
-            text: prismicH.asText(response.data.text),
+            text: prismicH.asText(response?.data.text),
             infos: response.data.infos.map(info => {
                 return {
                     number: info.number,
@@ -167,7 +171,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         },    
     }
 
-    //console.log(JSON.stringify(continent, null, 2));
+    // console.log(JSON.stringify(continent, null, 2));
     return {
         props: {
             continent,
