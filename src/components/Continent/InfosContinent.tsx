@@ -1,12 +1,9 @@
-import { PopoverArrow } from "@chakra-ui/core";
-import { Flex, GridItem, Text, Tooltip, Icon, Box, Image } from "@chakra-ui/react";
-import { FiAlertCircle } from 'react-icons/fi'
+import { Flex, GridItem, Text, Tooltip, Image } from "@chakra-ui/react";
 
 export function InfosContinent({ infos }) {
   return (
     <>
       <GridItem
-        //w="480px"
         m="auto"
         fontSize={["0.875rem", "1.5rem"]}
         fontWeight={["500", "600"]}
@@ -47,7 +44,7 @@ export function InfosContinent({ infos }) {
                   >
                     <Image 
                       src="/icons/info.svg" 
-                      alt="icon info"
+                      alt=""
                       h={["10px", "16px"]}
                       w={["10px", "16px"]}
                       m="1"
