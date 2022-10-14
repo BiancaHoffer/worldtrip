@@ -48,7 +48,7 @@ export default function Home({ datas }: HomeProps) {
             pb={["4", "8"]}
            
           >
-            Vamos nessa? <br/> Então escolha seu continente 
+            Vamos nessa?! <br/> Então escolha seu continente 
           </Text>
           
           <Slides
